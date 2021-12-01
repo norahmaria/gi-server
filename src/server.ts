@@ -1,0 +1,25 @@
+import createApp from './config/createApp'
+import createRoutes from './config/createRoutes'
+import createSockets from './config/createSockets'
+import connectMongo from './config/connectMongo'
+
+import http from 'http'
+import cors from './env/cors'
+
+const launch = async () => {
+  await connectMongo()
+    .then(() => console.log('🙊 MongoDB Connected')) 
+
+  const app = createApp(cors)
+  const server = http.createServer(app)
+
+  await createSockets(server, cors, './src/sockets', 'sockets')
+    .then(() => console.log('🧨 Sockets Lit Up'))
+
+  await createRoutes('./src/routes', app, 'routes')
+    .then(() => console.log('🏎  Paths Created'))
+
+  server.listen(5005, () => console.log('🚀 Server Up'))
+}
+
+launch()
