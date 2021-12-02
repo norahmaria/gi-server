@@ -24,7 +24,7 @@ const launch = async () => {
     res.send({ greeting: 'Hello World' })
   })
 
-  server.listen(5005, () => console.log('🚀 Server Up'))
+  server.listen(process.env.PORT || 5005, () => console.log('🚀 Server Up'))
 }
 
 launch()
