@@ -20,6 +20,8 @@ const launch = async () => {
   await createRoutes(env.ENVIRONMENT === 'LIVE' ? './build/routes' : './src/routes', app, 'routes')
     .then(() => console.log('🏎  Paths Created'))
 
+  app.get('/', (req, res) => res.send({ greeting: 'Hello World' }))
+
   server.listen(5005, () => console.log('🚀 Server Up'))
 }
 
