@@ -8,7 +8,7 @@ const reaction: Event = async (data, io, socket) => {
   const { userId } = socket.data
   const { reaction, postId, callback } = data
     
-  console.log('a reaction incoming!')
+  console.log('😊😊😊 A reaction incoming!')
 
   try {
     const post = await Post.findById(postId)
