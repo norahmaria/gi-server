@@ -18,7 +18,7 @@ const createRoutes = async (dirPath: string, app: Application, mainFolderName: s
       const filesAndFolders = fs.readdirSync(`${resolvedPath}/${file.name}`, { withFileTypes: true })
 
       // Files in the directory
-      const directoryFiles = filesAndFolders.filter(dirent => !dirent.isDirectory() && dirent.name.endsWith(env.ENVIRONMENT === 'LIVE' ? '.js' : '.ts'))
+      const directoryFiles = filesAndFolders.filter(dirent => !dirent.isDirectory())
         
       // For each file in the directory get the Name of the file
       for (const { name } of directoryFiles) {

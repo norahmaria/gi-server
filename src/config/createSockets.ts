@@ -14,7 +14,7 @@ const createSockets = async (server: http.Server, cors: Cors, dirPath: string, m
 
   // Get path relative to where package.json is
   const resolvedPath = path.resolve('./', dirPath)
-  const files = fs.readdirSync(resolvedPath, { withFileTypes: true }).filter(dirent => dirent.name.endsWith(env.ENVIRONMENT === 'LIVE' ? '.js' : '.ts'))
+  const files = fs.readdirSync(resolvedPath, { withFileTypes: true })
 
   io.on('connection', async (socket) => {
     // Loop through all files in directory

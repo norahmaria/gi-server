@@ -6,7 +6,6 @@ import corsPackage from 'cors'
 const createApp = (cors: Cors) => {
   const app = express()
 
-  // TODO: Reminder this line is new
   app.set("trust proxy", 1)
   app.use(corsPackage(cors))
   app.use(express.json({ limit: '30mb' }))
