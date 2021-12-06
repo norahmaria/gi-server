@@ -16,8 +16,6 @@ const createApp = (cors: Cors) => {
   
   app.use(session({
     secret: env.SECRET,
-    resave: true,
-    saveUninitialized: true,
     cookie: { 
       secure: env.ENVIRONMENT === 'LIVE',
       sameSite: env.ENVIRONMENT === 'LIVE' ? 'strict' : 'lax',

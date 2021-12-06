@@ -25,7 +25,7 @@ const route: Route = {
       return res.status(200).cookie('token', token, {
         expires: new Date(Date.now() + 604800000),
         secure: env.ENVIRONMENT === 'LIVE',
-        sameSite: env.ENVIRONMENT === 'LIVE' ? 'strict' : 'lax',
+        sameSite: env.ENVIRONMENT === 'LIVE' ? 'lax' : 'lax',
         httpOnly: true
       }).send(user)
     } catch (error) {

@@ -12,7 +12,7 @@ const authorization = (req: Request, res: Response, next: NextFunction) => {
     res.locals.userId = userId
     next()
   } catch (error) {
-    return res.sendStatus(403)
+    return res.sendStatus(401)
   }
 } 
 
