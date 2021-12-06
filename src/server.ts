@@ -14,7 +14,7 @@ const launch = async () => {
   const app = createApp(cors)
   const server = http.createServer(app)
 
-  await createSockets(server, cors, env.ENVIRONMENT === 'LIVE' ? './build/routes' : './src/sockets', 'sockets')
+  await createSockets(server, cors, env.ENVIRONMENT === 'LIVE' ? './build/sockets' : './src/sockets', 'sockets')
     .then(() => console.log('🧨 Sockets Lit Up'))
 
   await createRoutes(env.ENVIRONMENT === 'LIVE' ? './build/routes' : './src/routes', app, 'routes')
