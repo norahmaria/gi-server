@@ -5,7 +5,7 @@ import env from '../env/env'
 const authorization = (socket: Socket, next: (err?: any | undefined) => void) => {
   const { cookie } = socket.request.headers
   const token = cookie?.split('token=')[1]
-  console.log('💡💡💡 Socket Auth')
+
   if (!token) return socket.disconnect()
 
   try {
