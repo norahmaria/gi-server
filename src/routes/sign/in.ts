@@ -22,12 +22,13 @@ const route: Route = {
       if (!correctPassword) return res.status(401).send({ errors: { password: 'Wrong password' } })
 
       const token = jwt.sign({ userId: user._id }, env.SECRET, { expiresIn: "1hr" })
-      return res.status(200).cookie('token', token, {
+      res.cookie('token', token, {
         expires: new Date(Date.now() + 604800000),
         secure: env.ENVIRONMENT === 'LIVE',
-        sameSite: env.ENVIRONMENT === 'LIVE' ? 'strict' : 'lax',
+        sameSite: env.ENVIRONMENT === 'LIVE' ? 'none' : 'lax',
         httpOnly: true
-      }).send(user)
+      })
+      return res.status(200).send(user)
     } catch (error) {
       console.log('@sign/in', error)
       return res.sendStatus(500)
