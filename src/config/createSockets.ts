@@ -17,7 +17,17 @@ const createSockets = async (server: http.Server, cors: Cors, dirPath: string, m
   const files = fs.readdirSync(resolvedPath, { withFileTypes: true })
 
   io.on('connection', async (socket) => {
-    console.log('📮📮📮 Socket Connected')
+    console.log('💻 PROCESS', process.cwd())
+
+    const ping = setInterval(() => {
+      socket.send(JSON.stringify(new Date()), () => {})
+    }, 1000)
+
+    socket.on('close', () => {
+      console.log('🚨🚨🚨 Closing SOCKET')
+      clearInterval(ping)
+    })
+
     // Loop through all files in directory
     for (const file of files) {
       if (file.isDirectory()) {
