@@ -8,9 +8,9 @@ const reaction: Event = async (data, io, socket) => {
   const { reaction, messageId, callback } = data
     
   try {
-    console.log('hello')
+    // Message reactions?
   } catch (error) {
-    return console.log(error)
+    return console.log('@message/reaction', error)
   }
 }
 

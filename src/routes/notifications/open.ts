@@ -15,7 +15,7 @@ const route: Route = {
 
       return res.status(200).send({ notificationOpened })
     } catch (error) {
-      console.log('@notifications/read', error)
+      console.log('@notifications/open', error)
       return res.sendStatus(500)
     }
   }

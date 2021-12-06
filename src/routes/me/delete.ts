@@ -49,7 +49,7 @@ const route: Route = {
       
       return res.status(200).send({ status: 'Deleted' })
     } catch (error) {
-      console.log('@me/edit', error)
+      console.log('@me/delete', error)
       return res.sendStatus(500)
     }
   }

@@ -15,7 +15,7 @@ const route: Route = {
       }, { new: true }).populate('creator')
       return res.status(200).send(postDocument)
     } catch (error) {
-      console.log('@post/edit', error)
+      console.log('@post/update', error)
       return res.sendStatus(500)
     }
   }

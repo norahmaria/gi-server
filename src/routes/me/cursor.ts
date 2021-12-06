@@ -40,7 +40,6 @@ const route: Route = {
         })
 
       posts.length = Number(limit)
-      console.log('posts', posts)
 
       return res.status(200).send({ 
         posts, 

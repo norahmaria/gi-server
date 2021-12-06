@@ -38,7 +38,7 @@ const create: Event = async (data, io, socket) => {
     io.to(chatId.toString()).emit('message/created', { messageDocument, chatId })
     callback()
   } catch (error) {
-    return console.log(error)
+    return console.log('@message/create', error)
   }
 }
 

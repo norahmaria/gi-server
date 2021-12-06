@@ -1,7 +1,6 @@
 import type { Cors } from '../env/cors'
 import { Server } from 'socket.io'
 import authorization from '../middlewares/ws'
-import env from '../env/env'
 import http from 'http'
 import path from 'path'
 import fs from 'fs'
@@ -17,14 +16,11 @@ const createSockets = async (server: http.Server, cors: Cors, dirPath: string, m
   const files = fs.readdirSync(resolvedPath, { withFileTypes: true })
 
   io.on('connection', async (socket) => {
-    console.log('💻 PROCESS', process.cwd())
-
     const ping = setInterval(() => {
       socket.send(JSON.stringify(new Date()), () => {})
     }, 1000)
 
     socket.on('close', () => {
-      console.log('🚨🚨🚨 Closing SOCKET')
       clearInterval(ping)
     })
 
@@ -44,7 +40,6 @@ const createSockets = async (server: http.Server, cors: Cors, dirPath: string, m
           const path = `${file.name}/${name.split('.')[0]}`
           const event = content['default']
   
-          console.log('PATH', path)
           socket.on(path, (data, callback) => event({...data, callback}, io, socket))
         }
     

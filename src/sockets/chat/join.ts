@@ -35,7 +35,7 @@ const join: Event = async (data, io, socket) => {
     
     callback(chat)
   } catch (error) {
-    return console.log('chatJoined', error)
+    return console.log('@chat/join', error)
   }
 }
 

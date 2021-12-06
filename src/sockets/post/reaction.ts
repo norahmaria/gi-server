@@ -12,7 +12,7 @@ const reaction: Event = async (data, io, socket) => {
 
   try {
     const post = await Post.findById(postId)
-    if (!post) return console.log('no post')
+    if (!post) return
 
     await post.populate('creator')
     
@@ -55,7 +55,7 @@ const reaction: Event = async (data, io, socket) => {
       io.to((post.creator as User)._id.toString()).emit('notification/created', { notification })
     }
   } catch (error) {
-    return console.log(error)
+    return console.log('@post/reaction', error)
   }
 }
 

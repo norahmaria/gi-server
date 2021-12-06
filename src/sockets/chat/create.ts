@@ -39,7 +39,7 @@ const create: Event = async (data, io, socket) => {
     
     callback(chat)
   } catch (error) {
-    return console.log('creatingChat', error)
+    return console.log('@chat/create', error)
   }
 }
 

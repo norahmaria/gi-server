@@ -31,7 +31,7 @@ const follow: Event = async (data, io, socket) => {
     
     callback(user)
   } catch (error) {
-    return console.log('follow', error)
+    return console.log('@follow', error)
   }
 }
 

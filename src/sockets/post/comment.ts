@@ -38,7 +38,7 @@ const comment: Event = async (data, io, socket) => {
 
     callback(comment)
   } catch (error) {
-    return
+    return console.log('@post/comment', error)
   }
 }
 

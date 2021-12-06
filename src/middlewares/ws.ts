@@ -15,7 +15,6 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
 
     return next()
   } catch (error) {
-    console.log('🔷🔷🔷 Socket Disconnected', error)
     return socket.disconnect()
   }
 }
