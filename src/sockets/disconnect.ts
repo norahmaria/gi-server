@@ -3,6 +3,7 @@ import type Event from '../types/Event'
 import User from '../models/User'
 
 const disconnect: Event = async (data, io, socket) => {  
+  console.log('🚦🚦🚦 Socket Disconnected')
   socket.leave(socket.data.userId)
 
   const users = (await io.fetchSockets()).map(({ data }) => data.userId)
