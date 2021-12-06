@@ -18,7 +18,7 @@ const createApp = (cors: Cors) => {
     secret: env.SECRET,
     cookie: { 
       secure: env.ENVIRONMENT === 'LIVE',
-      sameSite: env.ENVIRONMENT === 'LIVE' ? 'strict' : 'lax',
+      sameSite: env.ENVIRONMENT === 'LIVE' ? 'lax' : 'lax',
       httpOnly: true, 
       maxAge: 1000 * 60 * 60 * 24 
     }
