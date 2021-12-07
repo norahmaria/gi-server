@@ -14,7 +14,7 @@ const route: Route = {
         secure: env.ENVIRONMENT === 'LIVE',
         sameSite: env.ENVIRONMENT === 'LIVE' ? 'none' : 'lax',
         httpOnly: true 
-      })
+      }).send({ message: 'Logout Clear' })
       // return res.clearCookie('token').sendStatus(200)
     } catch (error) {
       console.log('@sign/out', error)
