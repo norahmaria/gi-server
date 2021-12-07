@@ -26,8 +26,7 @@ const route: Route = {
         expires: new Date(Date.now() + 604800000),
         secure: env.ENVIRONMENT === 'LIVE',
         sameSite: env.ENVIRONMENT === 'LIVE' ? 'none' : 'lax',
-        httpOnly: true,
-        domain: env.FRONT_END
+        httpOnly: true
       }).send(user)
     } catch (error) {
       console.log('@sign/in', error)
