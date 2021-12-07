@@ -10,7 +10,12 @@ const route: Route = {
   execute: async (req, res) => {
     try {
       req.session.destroy(error => console.log('@session', error))
-      return res.clearCookie('token').sendStatus(200)
+      return res.clearCookie('token', {
+        secure: env.ENVIRONMENT === 'LIVE',
+        sameSite: env.ENVIRONMENT === 'LIVE' ? 'none' : 'lax',
+        httpOnly: true 
+      })
+      // return res.clearCookie('token').sendStatus(200)
     } catch (error) {
       console.log('@sign/out', error)
       return res.status(500)
