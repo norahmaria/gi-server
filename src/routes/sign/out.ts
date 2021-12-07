@@ -9,7 +9,7 @@ const route: Route = {
   authorization,
   execute: async (req, res) => {
     try {
-      req.session.destroy(error => console.log('@session', error))
+      // req.session.destroy(error => console.log('@session', error))
       return res.clearCookie('token', {
         secure: env.ENVIRONMENT === 'LIVE',
         sameSite: env.ENVIRONMENT === 'LIVE' ? 'none' : 'lax',
