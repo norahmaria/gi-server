@@ -13,6 +13,12 @@ const reaction: Event = async (data, io, socket) => {
     if (!post) return
 
     await post.populate('creator')
+    await post.populate({
+      path: 'comments',
+      populate: [{
+        path: 'creator'
+      }]
+    })
     
     let remove = false
     const angryIndex = post.reactions.angry.indexOf(userId)
