@@ -13,7 +13,6 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
   }
 
   if (!token) return socket.disconnect()
-  console.log('@TOKEN', token)
 
   try {
     // @ts-expect-error
