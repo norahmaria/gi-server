@@ -15,7 +15,7 @@ const route: Route = {
       const { errors, valid } = validateSignIn(username, password)
       if (!valid) return res.status(401).send({ errors })
       
-      const user = await User.findOne({ username })
+      const user = await User.findOne({ username: username.toLowerCase() })
       if (!user) return res.status(404).send({ errors: { username: 'User not found' }})
 
       const correctPassword = await bcrypt.compare(password, user.password)

@@ -15,11 +15,11 @@ const route: Route = {
       const { errors, valid } = validateSignUp(username, email, password, confirmPassword)
       if (!valid) return res.status(401).send({ errors })
 
-      const existingUser = await User.findOne({ username })
+      const existingUser = await User.findOne({ username: username.toLowerCase() })
       if (existingUser) return res.status(401).send({ errors: { username: 'Username taken' } })
 
       const user = await User.create({
-        username,
+        username: username.toLowerCase(),
         email,
         password: await bcrypt.hash(password, 12),
         following: [],
