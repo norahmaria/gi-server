@@ -9,16 +9,16 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
   const token = cookie?.split('token=')[1]
 
   if (!token) return socket.disconnect()
+  console.log('@TOKEN', token)
 
   try {
     // @ts-expect-error
     const { userId } = jwt.verify(token, env.SECRET)
-    console.log('@SOCKET USERID', userId)
     socket.data.userId = userId
-
+    
     return next()
   } catch (error) {
-    console.log('@SOCKET AUTH ERROR', error)
+    console.log('@socket/middlware', error)
     return socket.disconnect()
   }
 }

@@ -16,7 +16,6 @@ const createSockets = async (server: http.Server, cors: Cors, dirPath: string, m
   const files = fs.readdirSync(resolvedPath, { withFileTypes: true })
 
   io.on('connection', async (socket) => {
-    console.log('🚗🚗🚗 Connection Established')
     const ping = setInterval(() => {
       socket.send(JSON.stringify(new Date()), () => {})
     }, 1000)
