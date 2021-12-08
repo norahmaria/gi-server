@@ -16,6 +16,7 @@ const createSockets = async (server: http.Server, cors: Cors, dirPath: string, m
   const files = fs.readdirSync(resolvedPath, { withFileTypes: true })
 
   io.on('connection', async (socket) => {
+    console.log('🚗🚗🚗 Connection Established')
     const ping = setInterval(() => {
       socket.send(JSON.stringify(new Date()), () => {})
     }, 1000)
@@ -39,7 +40,9 @@ const createSockets = async (server: http.Server, cors: Cors, dirPath: string, m
           const content = await import(`${resolvedPath}/${file.name}/${name}`)
           const path = `${file.name}/${name.split('.')[0]}`
           const event = content['default']
+
           console.log('@PATH EXAMPLE', path)
+          
           socket.on(path, (data, callback) => event({...data, callback}, io, socket))
         }
     
