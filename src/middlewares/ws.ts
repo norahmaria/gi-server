@@ -6,6 +6,7 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
   const { cookie } = socket.request.headers
   const token = cookie?.split('token=')[1]
 
+  console.log('TOKENN', token)
   if (!token) return socket.disconnect()
 
   try {
