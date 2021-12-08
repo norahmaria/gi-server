@@ -8,10 +8,7 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
   const { cookie } = socket.request.headers
   const token = cookie?.split('token=')[1]
 
-  console.log('@TOKEN VARIABLE', token)
   if (!token) return socket.disconnect()
-
-  console.log('still running')
 
   try {
     // @ts-expect-error
@@ -21,6 +18,7 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
 
     return next()
   } catch (error) {
+    console.log('@SOCKET AUTH ERROR', error)
     return socket.disconnect()
   }
 }
