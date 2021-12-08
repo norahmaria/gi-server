@@ -6,7 +6,11 @@ import env from '../env/env'
 
 const authorization = (socket: Socket, next: (err?: any | undefined) => void) => {
   const { cookie } = socket.request.headers
-  const token = cookie?.split('token=')[1]
+  let token = cookie?.split('token=')[1]
+
+  if (token?.toString().includes('heroku-session-affinity=')) {
+    token = token.split('; heroku-session-affinity=')[0]
+  }
 
   if (!token) return socket.disconnect()
   console.log('@TOKEN', token)
@@ -18,6 +22,8 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
     
     return next()
   } catch (error) {
+    // JsonWebTokenError: jwt malformed (pc sometimes)
+    // JsonWebTokenError: invalid token (mobile)
     console.log('@socket/middlware', error)
     return socket.disconnect()
   }
