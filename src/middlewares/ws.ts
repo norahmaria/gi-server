@@ -9,7 +9,7 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
   const token = cookie?.split('token=')[1]
 
   console.log('@SOCKET HEADERS', socket.request.headers)
-  console.log('@COOKIE VARIABLE', cookie)
+  console.log('@TOKEN VARIABLE', token)
   if (!token) return socket.disconnect()
 
   try {
