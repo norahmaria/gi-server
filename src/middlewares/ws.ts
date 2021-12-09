@@ -4,8 +4,9 @@ import env from '../env/env'
 
 const authorization = (socket: Socket, next: (err?: any | undefined) => void) => {
   const { cookie } = socket.request.headers
-  const cookies = cookie?.split(';').map(variable => variable.trim())
-
+  if (!cookie) return socket.disconnect()
+  
+  const cookies = cookie.split(';').map(variable => variable.trim())
   if (!cookies) return socket.disconnect()
 
   try {
