@@ -6,7 +6,7 @@ import env from '../env/env'
 
 const authorization = (socket: Socket, next: (err?: any | undefined) => void) => {
   const { cookie } = socket.request.headers
-  const cookies = cookie?.split(';')
+  const cookies = cookie?.split(';').map(variable => variable.trim())
 
   console.log('@COOKIES', cookies)
   if (cookies) {
