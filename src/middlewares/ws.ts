@@ -6,6 +6,7 @@ import env from '../env/env'
 
 const authorization = (socket: Socket, next: (err?: any | undefined) => void) => {
   const { cookie } = socket.request.headers
+  console.log('@COOKIE', cookie)
   let token = cookie?.split('token=')[1]
 
   if (token?.toString().includes('heroku-session-affinity=')) {
