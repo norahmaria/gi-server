@@ -8,23 +8,18 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
   const { cookie } = socket.request.headers
   const cookies = cookie?.split(';').map(variable => variable.trim())
 
-  console.log('@COOKIES', cookies)
-  if (cookies) {
-    const token = cookies?.findIndex(variable => variable.startsWith('token'))
-    console.log(cookies[token])
-  }
-
-  // let token = cookie?.split('token=')[1]
-
-  // if (!token) return socket.disconnect()
-
-  // if (token.toString().includes('heroku-session-affinity')) {
-  //   token = token.split('; heroku-session-affinity=')[0]
-  // }
+  if (!cookies) return socket.disconnect()
 
   try {
+    const token = () => {
+      const index = cookies?.findIndex(variable => variable.startsWith('token'))
+      return cookies[index].split('token=')[1]
+    }
+
+    console.log('@TOKEN', token())
+
     // @ts-expect-error
-    const { userId } = jwt.verify(token, env.SECRET)
+    const { userId } = jwt.verify(token(), env.SECRET)
     socket.data.userId = userId
     
     return next()
