@@ -2,8 +2,6 @@ import { Socket } from 'socket.io'
 import jwt from 'jsonwebtoken'
 import env from '../env/env'
 
-// TODO: Fix Token not being added
-
 const authorization = (socket: Socket, next: (err?: any | undefined) => void) => {
   const { cookie } = socket.request.headers
   const cookies = cookie?.split(';').map(variable => variable.trim())
