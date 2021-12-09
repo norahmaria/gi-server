@@ -2,8 +2,6 @@ import type Route from '../../types/Route'
 import authorization from '../../middlewares/http'
 import env from '../../env/env'
 
-// TODO: Fix Sign Out
-
 const route: Route = {
   method: 'get',
   authorization,
