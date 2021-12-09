@@ -7,13 +7,20 @@ import env from '../env/env'
 const authorization = (socket: Socket, next: (err?: any | undefined) => void) => {
   const { cookie } = socket.request.headers
   console.log('@COOKIE', cookie)
-  let token = cookie?.split('token=')[1]
+  const cookies = cookie?.split(';')
 
-  if (token?.toString().includes('heroku-session-affinity=')) {
-    token = token.split('; heroku-session-affinity=')[0]
+  if (cookies) {
+    const token = cookies?.findIndex(variable => variable.startsWith('token'))
+    console.log(cookies[token])
   }
 
-  if (!token) return socket.disconnect()
+  // let token = cookie?.split('token=')[1]
+
+  // if (!token) return socket.disconnect()
+
+  // if (token.toString().includes('heroku-session-affinity')) {
+  //   token = token.split('; heroku-session-affinity=')[0]
+  // }
 
   try {
     // @ts-expect-error
