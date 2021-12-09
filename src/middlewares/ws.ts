@@ -16,8 +16,6 @@ const authorization = (socket: Socket, next: (err?: any | undefined) => void) =>
       return cookies[index].split('token=')[1]
     }
 
-    console.log('@TOKEN', token())
-
     // @ts-expect-error
     const { userId } = jwt.verify(token(), env.SECRET)
     socket.data.userId = userId
