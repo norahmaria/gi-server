@@ -23,6 +23,7 @@ directory/
 **🥳 Sockets:** Emitting a 'online' event will run the online.ts file, while emitting a 'post/reaction' event will run the reaction.ts file.
 
 ## To install and run the app locally:
+Create a *.env* file in the **src/env** folder, and put in the env variables as shown in *.env.example*. The env variable for ENVIRONMENT should be set to LIVE when deployed, and OFFLINE or *not set at all* when in localhost.
 ```
 npm install
 npm run dev
