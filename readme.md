@@ -6,7 +6,7 @@
 ## Creation of routes and sockets
 This NodeJS backend does not follow the standard MVP structure, but rather uses the **routes and sockets folders** to create the routes and sockets dynamically.
 
-###### Imagine this structure
+###### Example structure:
 ```
 directory/
 ━ routes/
@@ -18,8 +18,9 @@ directory/
   ━ post/
     ━ reaction.ts
 ```
-**🏎 Routes:** Sending a request to *domain.com/feed* will run the feed.ts file, and a request to *domain.com/sign/in* will run the in.ts file.
-**🧨 Sockets:** Emitting a 'online' event will run the online.ts file, while emitting a 'post/reaction' event will run the reaction.ts file.
+**🤓 Routes:** Sending a request to *domain.com/feed* will run the feed.ts file, and a request to *domain.com/sign/in* will run the in.ts file.
+
+**🥳 Sockets:** Emitting a 'online' event will run the online.ts file, while emitting a 'post/reaction' event will run the reaction.ts file.
 
 ## To install and run the app locally:
 ```
