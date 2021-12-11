@@ -1,7 +1,7 @@
 # Gi (server)
 ![Thumbnail](https://github.com/norahmaria/gi-client/blob/main/public/thumbnail.png?raw=true)
 
-> Gi is a mini social network built with the MERN stack and Socket.IO for live updates.
+> Gi is a mini social network built with the MERN stack and Socket.IO for live updates. **This as a project for my personal portfolio, to learn more about Socket.IO.**, so contributions are limited.
 
 ## Creation of routes and sockets
 This NodeJS backend does not follow the standard MVP structure, but rather uses the **routes and sockets folders** to create the routes and sockets dynamically.
@@ -28,3 +28,4 @@ Add a *.env* file in the *src/env* folder with the url to your own [Gi Client](h
 npm install
 npm run dev
 ```
+When hosting to Heroku, you need to enable [Session Affinity](https://devcenter.heroku.com/articles/session-affinity) for the sockets to work properly.
